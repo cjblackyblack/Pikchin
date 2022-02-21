@@ -16,13 +16,13 @@ public class pikchin : MonoBehaviour
     public Transform destinationTestTransform;
 
     private Renderer meshRenderer;
-    private Animator animator;
+    private Animator animator => GetComponentInChildren<Animator>();
+
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         meshRenderer = GetComponent<Renderer>();
-        animator = GetComponent<Animator>();
     }
 
     // Start is called before the first frame update
@@ -49,6 +49,8 @@ public class pikchin : MonoBehaviour
             }
 
         }
+
+        transform.GetChild(0).rotation = Camera.main.transform.rotation;
     }
 
     public void SetDestination(Vector3 dest)
