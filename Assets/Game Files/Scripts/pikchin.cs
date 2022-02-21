@@ -16,6 +16,7 @@ public class pikchin : MonoBehaviour
     public Transform destinationTestTransform;
 
     private Renderer meshRenderer;
+    private Animator animator;
 
     private void Awake()
     {
@@ -33,29 +34,42 @@ public class pikchin : MonoBehaviour
     void Update()
     {
         //agent.destination = destinationTestTransform.position;
-        if(currentState == State.Move && Vector3.Distance(transform.position, agent.destination) < destReachedThreshold)
+        if(currentState == State.Idle)
         {
-            currentState = State.Idle;
-            agent.isStopped = true;
+
+        }
+        else if(currentState == State.Move) 
+        {
+            if (Vector3.Distance(transform.position, agent.destination) < destReachedThreshold)
+            {
+                currentState = State.Idle;
+                agent.isStopped = true;
+                animator.SetBool("isMoving", false);
+            }
+
         }
     }
 
     public void SetDestination(Vector3 dest)
     {
         currentState = State.Move;
+        animator.SetBool("isMoving", true);
         agent.destination = dest;
         agent.isStopped = false;
     }
 
     public void SetSelected(bool selected)
     {
-        if(selected)
+        if (meshRenderer != null)
         {
-            meshRenderer.material = selectedMat;
-        }
-        else
-        {
-            meshRenderer.material = regularMat;
+            if (selected)
+            {
+                meshRenderer.material = selectedMat;
+            }
+            else
+            {
+                meshRenderer.material = regularMat;
+            }
         }
     }
 }
