@@ -18,8 +18,8 @@ public class ChemistryObject : MonoBehaviour
 	public float BurnTime;
 	public float ShockTime;
 
-	float burnTimer;
-	float shockTimer;
+	public float burnTimer;
+	public float shockTimer;
 
 	private void Update()
 	{
