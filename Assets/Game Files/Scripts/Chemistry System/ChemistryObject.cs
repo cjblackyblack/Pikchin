@@ -35,7 +35,12 @@ public class ChemistryObject : MonoBehaviour
 					{
 						burnTimer -= Time.deltaTime;
 						if (burnTimer <= 0)
-							ClearChemistry();
+						{
+							if (ChemistryMaterial != ChemistryMaterial.Wood)
+								ClearChemistry();
+							else
+								Destroy(this.gameObject);
+						}
 					}
 					break;
 				}
@@ -171,7 +176,7 @@ public class ChemistryObject : MonoBehaviour
 
 	public void Burn()
 	{
-		if (!Source)
+		if (!Source && burnTimer == 0)
 		{
 			if (ChemistryState == ChemistryState.Water)
 				ClearChemistry();
@@ -185,7 +190,7 @@ public class ChemistryObject : MonoBehaviour
 
 	public void Shock()
 	{
-		if (!Source)
+		if (!Source && shockTimer == 0)
 		{
 			shockTimer = ShockTime;
 			ChemistryState = ChemistryState.Elec;
