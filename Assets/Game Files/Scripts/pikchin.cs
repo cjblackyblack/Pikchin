@@ -22,6 +22,7 @@ public class pikchin : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         meshRenderer = GetComponent<Renderer>();
+        animator = GetComponent<Animator>();
     }
 
     // Start is called before the first frame update
