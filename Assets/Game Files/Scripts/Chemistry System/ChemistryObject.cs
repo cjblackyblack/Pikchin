@@ -176,7 +176,7 @@ public class ChemistryObject : MonoBehaviour
 
 	public void Burn()
 	{
-		if (!Source && burnTimer == 0)
+		if (!Source && burnTimer <= 0)
 		{
 			if (ChemistryState == ChemistryState.Water)
 				ClearChemistry();
@@ -190,7 +190,7 @@ public class ChemistryObject : MonoBehaviour
 
 	public void Shock()
 	{
-		if (!Source && shockTimer == 0)
+		if (!Source && shockTimer <= 0)
 		{
 			shockTimer = ShockTime;
 			ChemistryState = ChemistryState.Elec;
