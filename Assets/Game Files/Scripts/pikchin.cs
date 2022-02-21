@@ -50,7 +50,7 @@ public class pikchin : MonoBehaviour
 
         }
 
-        transform.GetChild(0).rotation = Camera.main.transform.rotation;
+        transform.GetChild(3).rotation = Camera.main.transform.rotation;
     }
 
     public void SetDestination(Vector3 dest)

@@ -173,9 +173,9 @@ public class ChemistryObject : MonoBehaviour
 				ChemistryState = ChemistryState.None;
 
 			//Clear VFX
-			FireVFX.SetActive(false);
-			ShockVFX.SetActive(false);
-			WetVFX.SetActive(false);
+			FireVFX?.SetActive(false);
+			ShockVFX?.SetActive(false);
+			WetVFX?.SetActive(false);
 		}
 	}
 
@@ -189,7 +189,7 @@ public class ChemistryObject : MonoBehaviour
 			{
 				burnTimer = BurnTime;
 				ChemistryState = ChemistryState.Fire;
-				FireVFX.SetActive(true);
+				FireVFX?.SetActive(true);
 			}
 		}
 	}
@@ -200,7 +200,7 @@ public class ChemistryObject : MonoBehaviour
 		{
 			shockTimer = ShockTime;
 			ChemistryState = ChemistryState.Elec;
-			ShockVFX.SetActive(true);
+			ShockVFX?.SetActive(true);
 		}
 	}
 
@@ -214,7 +214,7 @@ public class ChemistryObject : MonoBehaviour
 			else
 			{
 				ChemistryState = ChemistryState.Water;
-				WetVFX.SetActive(true);
+				WetVFX?.SetActive(true);
 			}
 		}
 	}
