@@ -10,12 +10,17 @@ public class pikchin : MonoBehaviour
     NavMeshAgent agent;
     [SerializeField] State currentState;
     [SerializeField] float destReachedThreshold = .1f;
+    [SerializeField] Material regularMat;
+    [SerializeField] Material selectedMat;
 
     public Transform destinationTestTransform;
+
+    private Renderer meshRenderer;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        meshRenderer = GetComponent<Renderer>();
     }
 
     // Start is called before the first frame update
@@ -40,5 +45,17 @@ public class pikchin : MonoBehaviour
         currentState = State.Move;
         agent.destination = dest;
         agent.isStopped = false;
+    }
+
+    public void SetSelected(bool selected)
+    {
+        if(selected)
+        {
+            meshRenderer.material = selectedMat;
+        }
+        else
+        {
+            meshRenderer.material = regularMat;
+        }
     }
 }
