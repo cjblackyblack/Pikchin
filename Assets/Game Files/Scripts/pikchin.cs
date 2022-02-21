@@ -10,6 +10,7 @@ public class pikchin : MonoBehaviour
     NavMeshAgent agent;
     [SerializeField] State currentState;
     [SerializeField] float destReachedThreshold = .1f;
+    [SerializeField] GameObject selectedVisual;
     [SerializeField] Material regularMat;
     [SerializeField] Material selectedMat;
 
@@ -73,6 +74,10 @@ public class pikchin : MonoBehaviour
             {
                 meshRenderer.material = regularMat;
             }
+        }
+        if(selectedVisual != null)
+        {
+            selectedVisual.SetActive(selected);
         }
     }
 }
